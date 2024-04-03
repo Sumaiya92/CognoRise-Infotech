@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currency Convertor</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      * {
+        margin: 0%;
+        padding: 0%;
+        box-sizing: border-box;
+      }
+      .container {
+        min-height: 100vh;
+        max-width: 80vw;
+        margin: auto;
+      }
+      footer {
+        text-align: center;
+      }
+      nav ul li {
+        list-style: none;
+      }
+      nav ul li a {
+        text-decoration: none;
+        color: rgb(244, 241, 235);
+        font-size: 20px;
+        padding-right: 15px;
+        transition: all 300ms ease-in;
+      }
+      nav ul li a:hover {
+        cursor: pointer;
+        color: rgb(244, 188, 46);
+      }
+      .container form {
+        display: flex;
+        flex-direction: column;
+      }
+      .container form input,
+      select {
+        font-size: 25px;
+        margin: 2% 0;
+        outline: none;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        width: 25vw;
+      }
+      .container form select {
+        border-radius: 10px;
+      }
+      .container form label
+      {
+        font-size: 25px;
+        margin-top: 2%;
+        color: black
+      }
+      .btn {
+        width: 9vw;
+        padding: 10px;
+        border-radius: 5px;
+        outline: none;
+        border: 1px solid black;
+        margin-bottom: 3%;
+        background: rgb(72, 135, 114);
+      }
+      .btn:hover {
+        cursor: pointer;
+        color: #ccc;
+        transition: 500ms ease-in-out;
+      }
+      .table-value table{
+        width: 60vw;
+        text-align: center;
+        border: 3px solid darkcyan;
+        margin-top: 2%;
+        font-size: 20px;
+        
+      }
+      .output
+      {
+        display: none;
+        
+      }
+    
+    </style>
+  </head>
+
+  <body>
+    <div style="width: 100vw; height: 40px; padding: 3%; background: rgb(129, 180, 163)">
+      <div
+        style="
+          min-width: 100%;
+          display: flex;
+          justify-content: space-between;
+          font-size: 35px;
+          color: white; 
+        "
+      >
+        <div class="left">
+          <div class="logo">Currency Converter</div>
+        </div>
+        <nav>
+          <ul style="display: flex ;;">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">AboutUS</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+      <form action="/action.php" method="get">
+        <label>Choose the Quantity</label>
+        <input type="number" name="quantity" min="1"/>
+        <label>Choose a Currency $</label>
+        <select name="currency">
+          <option value="INR">Indian Rupees</option>
+          <option value="USD">US Dollars</option>
+          <option value="EUR">Euro</option>
+          <option value="CAD">Canadian Dollar</option>
+          <option value="AMD">Armenian Dram</option>
+          <option value="JPY">Japenese Yen</option>
+          <option value="RUB">Russian Rube</option>
+        </select>
+        <button class="btn" >Submit</button>
+      </form>
+      <div class="output" >
+        <h2>Here is the converted values in different currencies</h2>
+        <div class="table-value">
+          <table>
+            <thead>
+              <tr>
+                <th>Currency</th>
+                <th>Currency Code</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+            
+            </tbody>
+        
+          </table>
+        </div>
+      </div>
+    </div>
+    <footer>Copyrights &copy; All rights reserved</footer>
+    <script></script>
+    <script src="script.js"></script>
+  </body>
+</html>
