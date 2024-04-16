@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="stylle.css" />
+    <title>CountDown Timer</title>
+  </head>
+  <style>
+    *
+    #container {
+      display: block;
+      margin: 5%;
+      width: 100vw;
+      height: 100vh;
+      line-height: 3rem;
+      padding: 6%;
+      /* padding: 1%; */
+    }
+    .heading
+    {
+        padding: 2px 26px
+    }
+    .count {
+      display: flex;
+
+      justify-content: flex-start;
+      text-align: center;
+      /* padding: 1%; */
+      font-weight: 100;
+      font-size: 17px;
+    }
+
+    .count div {
+      flex-basis: 100px;
+    }
+    .count div p {
+      font: 2em sans-serif;
+    }
+    .count {
+      display: flex;
+    }
+    #btnStar {
+      width: 60px;
+      height: 30px;
+      background-color: rgb(49, 89, 154);
+      color: white;
+      border: none;
+      cursor: pointer;
+      left: 2%;
+      position: relative;
+    }
+    #btn {
+      width: 60px;
+      height: 30px;
+      background-color: rgb(49, 89, 154);
+      color: white;
+      border: none;
+      cursor: pointer;
+      left: 10%;
+      position: relative;
+    }
+  </style>
+  <body>
+    <div id="container">
+
+      <div class="heading">
+        <h1>Countdown timer!</h1>
+        <p>The countdown starts at</p>
+      </div>
+
+      <div class="count">
+        <div>
+          <span>Days</span>
+          <p id="days">00:</p>
+        </div>
+        <div>
+          <span>Hours</span>
+          <p id="hours">00:</p>
+        </div>
+        <div>
+          <span>Minutes</span>
+          <p id="minutes">00:</p>
+        </div>
+        <div>
+          <span>Seconds</span>
+          <p id="seconds">00</p>
+        </div>
+      </div>
+      <button id="btnStar" onclick="start()">Start</button>
+      <button id="btn" onclick="reset()">Reset</button>
+    </div>
+    <script>
+      var countdown;
+      var x;
+
+      function start() {
+        countdown = new Date("Apr 14,2024,00:00:00").getTime();
+        x = setInterval(function () {
+          var now = new Date().getTime();
+          var distance = countdown - now;
+
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          const minutes = Math.floor(
+            (distance % (1000 * 60 * 60)) / (1000 * 60)
+          );
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          document.getElementById("days").innerHTML = days;
+          document.getElementById("hours").innerHTML = hours;
+          document.getElementById("minutes").innerHTML = minutes;
+          document.getElementById("seconds").innerHTML = seconds;
+
+          if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("days").innerHTML = "00";
+            document.getElementById("hours").innerHTML = "00";
+            document.getElementById("minutes").innerHTML = "00";
+            document.getElementById("seconds").innerHTML = "00";
+          }
+        }, 1000);
+      }
+      var initialCountdown = new Date("Apr 14,2024,00:00:00").getTime();
+      start();
+      function reset() {
+        clearInterval(x);
+        countdown = initialCountdown;
+
+        var days = 0;
+        var hours = 0;
+        var minutes = 0;
+        var seconds = 0;
+
+        document.getElementById("days").innerHTML = days;
+        document.getElementById("hours").innerHTML = hours;
+        document.getElementById("minutes").innerHTML = minutes;
+        document.getElementById("seconds").innerHTML = seconds;
+      }
+      reset();
+    </script>
+  </body>
+</html>
+
+<!-- function start() {
+    var start = document.getElementById("btnStar");
+    start.addEventListener("click", function () {
+    var countdown = new Date("Apr 14,2024,00:00:00").getTime();
+    var x = setInterval(function () {
+    var now = new Date().getTime();
+    var distance = countdown - now;
+   
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+    (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+   
+    document.getElementById("days").innerHTML = days;
+    document.getElementById("hours").innerHTML = hours;
+    document.getElementById("minutes").innerHTML = minutes;
+    document.getElementById("seconds").innerHTML = seconds;
+   
+    if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("days").innerHTML = "0";
+    document.getElementById("hours").innerHTML = "0";
+    document.getElementById("minutes").innerHTML = "00";
+    document.getElementById("seconds").innerHTML = "00";
+    }
+    }, 1000);
+    });
+   } -->
